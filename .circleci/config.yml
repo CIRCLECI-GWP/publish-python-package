@@ -11,7 +11,7 @@ jobs:
             python3 --version
             sudo add-apt-repository universe
             sudo apt-get update
-            sudo apt-get install python3-pip
+            sudo apt-get install -y python3-pip
             sudo pip install pipenv
             pipenv install dist/convsn-0.0.2-py3-none-any.whl
             pipenv install pytest
@@ -29,7 +29,7 @@ jobs:
             python3 --version
             sudo add-apt-repository universe
             sudo apt-get update
-            sudo apt install python3-pip
+            sudo apt install -y python3-pip
             sudo pip install pipenv
             pipenv install twine
             pipenv run twine upload --repository testpypi dist/*
@@ -44,7 +44,7 @@ jobs:
             python3 --version
             sudo add-apt-repository universe
             sudo apt-get update
-            sudo apt install python3-pip
+            sudo apt install -y python3-pip
             sudo pip install pipenv
             pipenv install twine
             pipenv run twine upload dist/*
