@@ -2,7 +2,7 @@ version: 2.1
 jobs:
   build_test:
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.8.8
     steps:
       - checkout # checkout source code to working directory
       - run:
@@ -12,14 +12,14 @@ jobs:
             sudo apt-get update
             sudo apt install -y python3-pip
             sudo pip install pipenv
-            pipenv install dist/convsn-0.0.2-py3-none-any.whl
+            pipenv install dist/convsn-0.0.1-py3-none-any.whl
             pipenv install pytest
       - run:
           command: | # Run test suite
             pipenv run pytest
   test_pypi_publish:
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.8.8
     steps:
       - checkout # checkout source code to working directory
       - run:
@@ -33,7 +33,7 @@ jobs:
             pipenv run twine upload --repository testpypi dist/*
   pypi_publish:
     docker:
-      - image: cimg/python:3.11.0
+      - image: cimg/python:3.8.8
     steps:
       - checkout # checkout source code to working directory
       - run:
