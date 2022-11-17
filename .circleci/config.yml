@@ -7,9 +7,12 @@ jobs:
       - checkout # checkout source code to working directory
       - run:
           command: | # create whl and use pipenv to install dependencies
-            python setup.py sdist bdist_wheel
+            python3 setup.py sdist bdist_wheel
+            sudo add-apt-repository universe -y
+            sudo apt-get update
+            sudo apt install -y python3-pip
             sudo pip install pipenv
-            pipenv install dist/convsn-0.0.2-py3-none-any.whl
+            pipenv install dist/convsn-0.0.1-py3-none-any.whl
             pipenv install pytest
       - run:
           command: | # Run test suite
@@ -21,7 +24,10 @@ jobs:
       - checkout # checkout source code to working directory
       - run:
           command: | # create whl, install twine and publish to Test PyPI
-            python setup.py sdist bdist_wheel
+            python3 setup.py sdist bdist_wheel
+            sudo add-apt-repository universe -y
+            sudo apt-get update
+            sudo apt install -y python3-pip
             sudo pip install pipenv
             pipenv install twine
             pipenv run twine upload --repository testpypi dist/*
@@ -32,7 +38,10 @@ jobs:
       - checkout # checkout source code to working directory
       - run:
           command: | # create whl, install twine and publish to PyPI
-            python setup.py sdist bdist_wheel
+            python3 setup.py sdist bdist_wheel
+            sudo add-apt-repository universe -y
+            sudo apt-get update
+            sudo apt install -y python3-pip
             sudo pip install pipenv
             pipenv install twine
             pipenv run twine upload dist/*
